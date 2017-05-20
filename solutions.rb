@@ -35,7 +35,6 @@ while true
     operators.each do |operators|
       values.n_ary_trees.each do |left, right|
         n = ArithmeticNode.new left, right, operators.dup
-        # puts "#{n} = #{n.to_f}"
         solutions << n if n.to_f == sought
       end
     end
