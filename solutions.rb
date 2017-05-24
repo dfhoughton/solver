@@ -1,7 +1,7 @@
 require 'array_improvements'
 require 'arithmetic_node'
 
-operators = %i[ + - * / ** ].variations(3).freeze
+operators = %i[ + - * / ** log ].variations(3).freeze
 
 while true
   sought = nil

@@ -12,7 +12,11 @@ class ArithmeticNode
   end
 
   def to_s
-    "( #{left} #{operator} #{right} )"
+    if operator == :log
+      "log( #{left}, #{right} )"
+    else
+      "( #{left} #{operator} #{right} )"
+    end
   end
 
   def to_f
@@ -21,6 +25,14 @@ class ArithmeticNode
       return f if f.nan? || f.infinite?
       f
     end
-    f1.send operator, f2
+    if operator == :log
+      begin
+        Math.log f1, f2
+      rescue Math::DomainError
+        Float::NAN
+      end
+    else
+      f1.send operator, f2
+    end
   end
 end
